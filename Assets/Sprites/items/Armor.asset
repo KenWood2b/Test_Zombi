@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3119ef041b04bc54b9857c0733864fe8, type: 3}
+  m_Name: Armor
+  m_EditorClassIdentifier: 
+  itemName: BulletproofCloak
+  icon: {fileID: 21300000, guid: 5bf41c90c6636844391d2ffcb6ebaab4, type: 3}
+  quantity: 1
+  prefab: {fileID: 551101571497564942, guid: a41f38a1bdbf19348a4d1c162e099a39, type: 3}
+  itemType: 3

@@ -6,8 +6,8 @@ public class RangedEnemy : Enemy
     public Transform firePoint;
     public float bulletSpeed = 10f;
     public float attackCooldown = 2f;
-    public float safeDistance = 5f; // Расстояние до игрока для атаки
-    public float detectionRadius = 10f; // Радиус обнаружения игрока
+    public float safeDistance = 5f;
+    public float detectionRadius = 10f; 
 
     private float lastAttackTime;
     private bool playerDetected = false;
@@ -70,7 +70,7 @@ public class RangedEnemy : Enemy
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript != null)
         {
-            bulletScript.shooterTag = "Enemy"; // Указываем, что пуля выпущена врагом
+            bulletScript.shooterTag = "Enemy";
         }
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)

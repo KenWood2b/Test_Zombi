@@ -61,7 +61,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler, IBeginDragHand
         if (currentItem != null)
         {
             originalPosition = rectTransform.anchoredPosition;
-            itemImage.transform.SetParent(canvas.transform, true); // Переносим картинку в Canvas
+            itemImage.transform.SetParent(canvas.transform, true);
         }
     }
 
@@ -77,23 +77,20 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler, IBeginDragHand
     {
         if (currentItem != null)
         {
-            // Проверяем, на какой слот мы перетащили предмет
             InventorySlot targetSlot = eventData.pointerEnter?.GetComponent<InventorySlot>();
 
             if (targetSlot != null && targetSlot != this)
             {
-                // Обмен предметами между слотами
                 NewItem tempItem = targetSlot.GetItem();
                 targetSlot.SetItem(currentItem);
                 SetItem(tempItem);
             }
             else
             {
-                // Если предмет не был перетащен в другой слот, возвращаем его
                 rectTransform.anchoredPosition = originalPosition;
             }
 
-            itemImage.transform.SetParent(transform); // Возвращаем картинку обратно в слот
+            itemImage.transform.SetParent(transform);
         }
     }
 }

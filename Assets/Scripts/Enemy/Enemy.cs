@@ -3,14 +3,14 @@ using UnityEngine;
 public abstract class Enemy : Entity
 {
     protected Transform player;
-    public float speed = 2f; // Скорость врага
-    public float stopDistance = 2f; // Дистанция, на которой враг останавливается
-    private bool playerInSight = false; // Игрок в зоне видимости
+    public float speed = 2f;
+    public float stopDistance = 2f; 
+    private bool playerInSight = false; 
 
     protected override void Start()
     {
         base.Start();
-        player = GameObject.FindGameObjectWithTag("Player")?.transform; // Ищем игрока
+        player = GameObject.FindGameObjectWithTag("Player")?.transform; 
                                                                       
         IgnoreEnemyCollisions();
         IgnorePlayerCollision();
@@ -65,7 +65,7 @@ public abstract class Enemy : Entity
 
     protected void StopMoving()
     {
-        // Останавливаем движение врага
+       
     }
 
     protected void MoveTowardsPlayer()
@@ -81,7 +81,7 @@ public abstract class Enemy : Entity
 
         foreach (Enemy otherEnemy in enemies)
         {
-            if (otherEnemy != this) // Исключаем себя
+            if (otherEnemy != this)
             {
                 Collider2D otherCollider = otherEnemy.GetComponent<Collider2D>();
                 if (otherCollider != null)

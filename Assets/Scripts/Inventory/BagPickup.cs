@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BagPickup : PickupItem
 {
-    public GameObject backpackButton; // Кнопка для отображения рюкзака
+    public GameObject backpackButton;
 
     public override void OnPickup(GameObject player)
     {
@@ -16,11 +16,11 @@ public class BagPickup : PickupItem
 
         if (backpackButton != null)
         {
-            backpackButton.SetActive(true); // Активируем кнопку
+            backpackButton.SetActive(true);
         }
 
-        Inventory.Instance.ActivateBackpack(); // Активируем рюкзак
+        Inventory.Instance.ActivateBackpack();
 
-        Destroy(gameObject); // Уничтожаем объект в мире
+        Destroy(gameObject);
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemPickup : PickupItem
 {
-    public NewItem itemData; // Данные предмета
+    public NewItem itemData;
     public int quantity = 1;
 
     public override void OnPickup(GameObject player)
@@ -12,7 +12,7 @@ public class ItemPickup : PickupItem
         if (Inventory.Instance.Add(itemData))
         {
             Debug.Log($"Успешно добавлен: {itemData.itemName}, тип: {itemData.itemType}");
-            Destroy(gameObject); // Уничтожить объект на сцене
+            Destroy(gameObject);
         }
         else
         {

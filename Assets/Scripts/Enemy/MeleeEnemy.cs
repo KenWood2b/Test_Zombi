@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
-    public float attackRange = 2f; // Дистанция атаки
-    public float detectionRadius = 10f; // Радиус обнаружения игрока
-    public float damage = 5f; // Урон
-    private float lastAttackTime = 0f; // Последнее время атаки
-    public float attackCooldown = 1f; // Интервал между атаками
+    public float attackRange = 2f; 
+    public float detectionRadius = 10f; 
+    public float damage = 5f; 
+    private float lastAttackTime = 0f; 
+    public float attackCooldown = 1f; 
 
-    private bool playerDetected = false; // Флаг обнаружения игрока
-    private bool isAttacking = false; // Флаг текущей атаки
+    private bool playerDetected = false; 
+    private bool isAttacking = false; 
 
     private Animator animator;
 
@@ -29,7 +29,7 @@ public class MeleeEnemy : Enemy
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        // Проверяем, находится ли игрок в радиусе обнаружения
+      
         if (distanceToPlayer <= detectionRadius)
         {
             playerDetected = true;
@@ -43,19 +43,19 @@ public class MeleeEnemy : Enemy
         {
             if (distanceToPlayer > attackRange)
             {
-                MoveTowardsPlayer(); // Двигаемся к игроку
+                MoveTowardsPlayer();
                 SetAnimatorState(isWalking: true, isAttacking: false);
             }
             else if (!isAttacking && Time.time >= lastAttackTime + attackCooldown)
             {
-                StopMoving(); // Останавливаем движение
-                StartCoroutine(AttackRoutine()); // Запускаем атаку
+                StopMoving();
+                StartCoroutine(AttackRoutine());
                 SetAnimatorState(isWalking: false, isAttacking: true);
             }
         }
         else
         {
-            StopMoving(); // Если игрок вне зоны обнаружения, стоим на месте
+            StopMoving();
         }
     }
 
@@ -73,16 +73,16 @@ public class MeleeEnemy : Enemy
         Debug.Log("Враг ближнего боя атакует игрока!");
         if (player != null)
         {
-            player.GetComponent<Entity>()?.TakeDamage(damage); // Наносим урон игроку
+            player.GetComponent<Entity>()?.TakeDamage(damage);
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange); // Радиус атаки
+        Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius); // Радиус обнаружения
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 
     private void SetAnimatorState(bool isWalking, bool isAttacking)

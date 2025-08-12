@@ -4,12 +4,12 @@ using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory Instance { get; private set; } // Статический экземпляр для доступа
+    public static Inventory Instance { get; private set; }
 
-    public int space = 16; // Максимальное количество слотов
-    public List<NewItem> items = new List<NewItem>(); // Список предметов
+    public int space = 16;
+    public List<NewItem> items = new List<NewItem>();
 
-    private bool backpackActive = false; // Статус активации рюкзака
+    private bool backpackActive = false;
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;

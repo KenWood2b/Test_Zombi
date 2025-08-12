@@ -4,7 +4,7 @@ public class InventoryUI : MonoBehaviour
 {
 
     public static InventoryUI Instance { get; private set; }
-    public Transform slotsParent; // Родитель слотов
+    public Transform slotsParent;
     public GameObject inventoryPanel;
 
     private InventorySlot[] slots;
@@ -13,7 +13,7 @@ public class InventoryUI : MonoBehaviour
     {
         slots = slotsParent.GetComponentsInChildren<InventorySlot>();
         Inventory.Instance.onItemChangedCallback += UpdateUI;
-        inventoryPanel.SetActive(false); // Скрываем инвентарь при запуске
+        inventoryPanel.SetActive(false);
     }
 
     public int GetFreeSlotsCount()
@@ -36,7 +36,7 @@ public class InventoryUI : MonoBehaviour
             {
                 slots[i].SetItem(Inventory.Instance.items[i]);
             }
-            else if (slots[i].GetItem() != null) // Очищаем только занятые слоты
+            else if (slots[i].GetItem() != null)
             {
                 slots[i].ClearSlot();
             }

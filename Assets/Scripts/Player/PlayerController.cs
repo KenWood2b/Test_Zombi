@@ -4,32 +4,29 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Joystick joystick;
-    public Animator animator; // Ссылка на Animator для анимаций персонажа
+    public Animator animator;
 
     private Rigidbody2D rb;
     private Vector2 movement;
-    private Vector3 initialScale; // Для сохранения начального масштаба
+    private Vector3 initialScale; 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        initialScale = transform.localScale; // Сохраняем начальный масштаб персонажа
+        initialScale = transform.localScale;
         IgnoreEnemyCollisions();
     }
 
     void Update()
     {
-        // Получаем ввод от джойстика
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
 
-        // Поворот персонажа в зависимости от направления движения
         if (movement.x != 0)
         {
             transform.localScale = new Vector3(Mathf.Sign(movement.x) * initialScale.x, initialScale.y, initialScale.z);
         }
 
-        // Управление анимацией
         bool isWalking = movement.magnitude > 0;
         animator.SetBool("isWalking", isWalking);
         animator.SetFloat("Horizontal", movement.x);
@@ -38,7 +35,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Двигаем персонажа
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
